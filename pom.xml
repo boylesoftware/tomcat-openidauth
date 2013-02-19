@@ -11,13 +11,13 @@
 
 	<parent>
 		<groupId>com.boylesoftware</groupId>
-		<artifactId>parent</artifactId>
+		<artifactId>parent-os</artifactId>
 		<version>1.0.0</version>
 	</parent>
 
 	<groupId>com.boylesoftware.catalina.authenticator.openid</groupId>
 	<artifactId>openidauth</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.0-SNAPSHOT</version>
 
 	<name>OpenID Authenticator</name>
 	<description>Tomcat authenticator that uses OpenID specification.</description>
@@ -35,14 +35,15 @@
 	</developers>
 
 	<scm>
-		<developerConnection>scm:git:git@git.boylesoftware.com:boylesoftware/openidauth.git</developerConnection>
+		<connection>scm:git:https://github.com/boylesoftware/openidauth.git</connection>
+		<developerConnection>scm:git:git@github.com:boylesoftware/openidauth.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
 	<repositories>
 		<repository>
-			<id>boylesoftware</id>
-			<url>https://www.boylesoftware.com/maven/repo</url>
+			<id>boylesoftware-os</id>
+			<url>https://www.boylesoftware.com/maven/repo-os</url>
 		</repository>
 	</repositories>
 
