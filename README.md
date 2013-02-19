@@ -13,5 +13,5 @@ the same application can be deployed in an environment where OpenID
 authentication is used, or in an environment that only uses regular form-based
 authentication.
 
-For more information on the authenticator see its Wiki page at:
-(https://www.boylesoftware.com/wiki/index.php/OpenID_Authenticator_for_Tomcat)
+For more information on the authenticator see Wiki page at:
+https://www.boylesoftware.com/wiki/index.php/OpenID_Authenticator_for_Tomcat
