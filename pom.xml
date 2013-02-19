@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  - Project descriptor.
+  -
+  - author: Lev Himmelfarb
+ -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.boylesoftware</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<groupId>com.boylesoftware.catalina.authenticator.openid</groupId>
+	<artifactId>openidauth</artifactId>
+	<version>1.0.0</version>
+
+	<name>OpenID Authenticator</name>
+	<description>Tomcat authenticator that uses OpenID specification.</description>
+
+	<developers>
+		<developer>
+			<id>levahim</id>
+			<name>Lev Himmelfarb</name>
+			<email>lev@boylesoftware.com</email>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>-5</timezone>
+		</developer>
+	</developers>
+
+	<scm>
+		<developerConnection>scm:git:git@git.boylesoftware.com:boylesoftware/openidauth.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<repositories>
+		<repository>
+			<id>boylesoftware</id>
+			<url>https://www.boylesoftware.com/maven/repo</url>
+		</repository>
+	</repositories>
+
+	<properties>
+		<tomcat.version>7.0.34</tomcat.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-catalina</artifactId>
+			<version>${tomcat.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-juli</artifactId>
+			<version>${tomcat.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+</project>
