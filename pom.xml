@@ -17,7 +17,7 @@
 
 	<groupId>com.boylesoftware.catalina.authenticator.openid</groupId>
 	<artifactId>openidauth</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 
 	<name>OpenID Authenticator</name>
 	<description>Tomcat authenticator that uses OpenID specification.</description>
