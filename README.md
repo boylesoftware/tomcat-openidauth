@@ -14,4 +14,5 @@ authentication is used, or in an environment that only uses regular form-based
 authentication.
 
 For more information on the authenticator see Wiki page at:
+
 https://www.boylesoftware.com/wiki/index.php/OpenID_Authenticator_for_Tomcat
