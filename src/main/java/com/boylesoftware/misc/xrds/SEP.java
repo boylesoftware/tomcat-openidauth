@@ -95,7 +95,7 @@ public class SEP
 	 * Add SEP type SEL.
 	 *
 	 * @param value Type. Cannot be {@code null}, but can be empty.
-	 * @param select Select atttibute, or {@code false} if absent.
+	 * @param select Select attribute, or {@code false} if absent.
 	 * @param match Match attribute, or {@code null}.
 	 *
 	 * @throws URISyntaxException If the specified value is not empty and is not
@@ -111,7 +111,7 @@ public class SEP
 	 * Add SEP path SEL.
 	 *
 	 * @param value Path. Cannot be {@code null}, but can be empty.
-	 * @param select Select atttibute, or {@code false} if absent.
+	 * @param select Select attribute, or {@code false} if absent.
 	 * @param match Match attribute, or {@code null}.
 	 */
 	void addPath(String value, boolean select, SEL.Match match) {
@@ -123,7 +123,7 @@ public class SEP
 	 * Add SEP media type SEL.
 	 *
 	 * @param value Media type. Cannot be {@code null}, but can be empty.
-	 * @param select Select atttibute, or {@code false} if absent.
+	 * @param select Select attribute, or {@code false} if absent.
 	 * @param match Match attribute, or {@code null}.
 	 */
 	void addMediaType(String value, boolean select, SEL.Match match) {
@@ -227,7 +227,7 @@ public class SEP
 	 * Select SEP URI. The method does not perform the URI append logic as it
 	 * assumes an empty QXRI.
 	 *
-	 * @return Randmoly selected highest priority URI, or {@code null} if the
+	 * @return Randomly selected highest priority URI, or {@code null} if the
 	 * SEP does not have URIs.
 	 */
 	public URI getURI() {

@@ -167,7 +167,7 @@ abstract class SEL<T>
 	 * {@link Match#NULL}.
 	 * @param select {@code true} if this SEL has {@code select} attribute and
 	 * it is "true".
-	 * @param match Match atttibute, or {@code null}.
+	 * @param match Match attribute, or {@code null}.
 	 */
 	SEL(SELType type, Class<T> queryValueClass, String value, boolean select,
 			Match match) {

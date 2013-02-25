@@ -380,7 +380,7 @@ public class XRD
 	/**
 	 * Select a SEP from this XRD.
 	 *
-	 * @param type Requried SEP type, or {@code null} if irrelevant.
+	 * @param type Required SEP type, or {@code null} if irrelevant.
 	 * @param path Required SEP path, or {@code null} if irrelevant.
 	 * @param mediaType Required SEP media type, or {@code null} if irrelevant.
 	 * @param flags Combination of {@link #NODEFAULT_T}, {@link #NODEFAULT_P}
@@ -414,14 +414,14 @@ public class XRD
 			highestPriSEPs.add(sep);
 		}
 
-		// pick remaing SEP randomly
+		// pick remaining SEP randomly
 		return highestPriSEPs.get(RAND.nextInt(highestPriSEPs.size()));
 	}
 
 	/**
 	 * Execute SEP matching logic.
 	 *
-	 * @param type Requried SEP type, or {@code null} if irrelevant.
+	 * @param type Required SEP type, or {@code null} if irrelevant.
 	 * @param path Required SEP path, or {@code null} if irrelevant.
 	 * @param mediaType Required SEP media type, or {@code null} if irrelevant.
 	 * @param flags Combination of {@link #NODEFAULT_T}, {@link #NODEFAULT_P}

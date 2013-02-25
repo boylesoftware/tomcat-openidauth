@@ -29,7 +29,7 @@ class TypeSEL
 	 *
 	 * @param value SEL value.
 	 * @param select Select attribute.
-	 * @param match Match atttibute, or {@code null}.
+	 * @param match Match attribute, or {@code null}.
 	 *
 	 * @throws URISyntaxException If the specified value is not empty and not a
 	 * valid URI.

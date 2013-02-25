@@ -20,7 +20,7 @@ class MediaTypeSEL
 	 *
 	 * @param value SEL value.
 	 * @param select Select attribute.
-	 * @param match Match atttibute, or {@code null}.
+	 * @param match Match attribute, or {@code null}.
 	 */
 	MediaTypeSEL(String value, boolean select, Match match) {
 		super(SELType.MEDIA_TYPE, String.class, value, select, match);

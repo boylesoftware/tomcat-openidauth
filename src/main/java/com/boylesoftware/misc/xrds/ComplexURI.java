@@ -149,7 +149,7 @@ class ComplexURI {
 	 *
 	 * @return Selected URI, or {@code null} if the collection is empty.
 	 *
-	 * @throws NullPointerException If the specified colelction is {@code null}.
+	 * @throws NullPointerException If the specified collection is {@code null}.
 	 */
 	public static ComplexURI select(Collection<ComplexURI> curis) {
 

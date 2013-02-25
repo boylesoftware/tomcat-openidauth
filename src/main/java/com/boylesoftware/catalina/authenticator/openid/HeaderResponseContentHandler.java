@@ -5,7 +5,7 @@ import java.net.HttpURLConnection;
 
 
 /**
- * Response handler for exctracting an HTTP response header value.
+ * Response handler for extracting an HTTP response header value.
  *
  * @author Lev Himmelfarb
  */

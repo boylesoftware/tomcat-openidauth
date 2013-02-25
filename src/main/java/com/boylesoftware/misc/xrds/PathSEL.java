@@ -34,7 +34,7 @@ class PathSEL
 	 *
 	 * @param value SEL value.
 	 * @param select Select attribute.
-	 * @param match Match atttibute, or {@code null}.
+	 * @param match Match attribute, or {@code null}.
 	 */
 	PathSEL(String value, boolean select,
 			com.boylesoftware.misc.xrds.SEL.Match match) {
