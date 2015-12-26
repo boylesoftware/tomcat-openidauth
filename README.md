@@ -22,9 +22,9 @@ Below are examples of some well known values that can be used as user-supplied I
 
 Value                                                                              | Type               | Description
 -----------------------------------------------------------------------------------|--------------------|-------------------------------------------------------------------------------
-https://<i></i>www.<i></i>google.com/accounts/o8/id                                | OP ID              | Used for regular Google users, such as GMail users.
-https://<i></i>www.<i></i>google.com/accounts/o8/id?id=[id]                        | Claimed ID         | Google user claimed ID. The id parameter is a mixed-case alpha-numeric value.
-https://<i></i>www.<i></i>google.com/accounts/o8/.well-known/host-meta?hd=[domain] | Host Meta-Data URL | Used for Google Apps accounts. Domain name can be something like "example.com".
+https://<i></i>ww<i></i>w.google.com/accounts/o8/id                                | OP ID              | Used for regular Google users, such as GMail users.
+https://<i></i>ww<i></i>w.google.com/accounts/o8/id?id=[id]                        | Claimed ID         | Google user claimed ID. The id parameter is a mixed-case alpha-numeric value.
+https://<i></i>ww<i></i>w.google.com/accounts/o8/.well-known/host-meta?hd=[domain] | Host Meta-Data URL | Used for Google Apps accounts. Domain name can be something like "example.com".
 http://<i></i>[domain]/openid?id=[id]                                              | Claimed ID         | Claimed IDs assigned to Google Apps users. Domain can be "example.com", and the id parameter is a number containing only decimal digits.
 https://<i></i>me.yahoo.com                                                        | OP ID              | Used for Yahoo! users.
 https://<i></i>me.yahoo.com/a/[id]                                                 | Claimed ID         | Yahoo! user claimed ID. The id value is mixed-case alphanumeric plus dash.
@@ -76,7 +76,7 @@ The authenticator supports the following optional properties:
 
 * **hostBaseURI**
 
-	Virtual host base URI. When the authenticator redirects the browser to the OpenID provider, it needs to specify the URL of the page, to which the OpenID provider must return after user authentication. This is so called *return URL*. The **hostBaseURI** property is used to construct the return URL. It must include and protocol (should be always HTTPS), host and, if needed, port, but not the context path. It also *must not* end with a slash. For example, "https://<i></i>www.<i></i>example.com". If this property is not specified, the authenticator will make an attempt to construct the URI based on the current request. In majority of cases, the authenticator can construct the correct URI, so this property rarely needs to be overridden.
+	Virtual host base URI. When the authenticator redirects the browser to the OpenID provider, it needs to specify the URL of the page, to which the OpenID provider must return after user authentication. This is so called *return URL*. The **hostBaseURI** property is used to construct the return URL. It must include and protocol (should be always HTTPS), host and, if needed, port, but not the context path. It also *must not* end with a slash. For example, "https://<i></i>ww<i></i>w.example.com". If this property is not specified, the authenticator will make an attempt to construct the URI based on the current request. In majority of cases, the authenticator can construct the correct URI, so this property rarely needs to be overridden.
 
 * **singleProviderURI**
 
