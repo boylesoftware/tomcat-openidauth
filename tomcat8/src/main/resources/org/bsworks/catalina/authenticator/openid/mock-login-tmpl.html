@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>OpenID Authenticator Mock Login</title>
+	</head>
+	<body>
+		<h1>OpenID Authenticator Mock Login</h1>
+		<form action="${contextPath}/j_security_check" method="get">
+			<input type="hidden" name="openid.ns" value="http://specs.openid.net/auth/2.0"/>
+			<input type="hidden" name="openid.mode" value="id_res"/>
+			<input type="hidden" name="openid.ns.ext1" value="http://openid.net/srv/ax/1.0"/>
+			<input type="hidden" name="openid.ext1.mode" value="fetch_response"/>
+			<input type="hidden" name="openid.ext1.type.loginName" value="${loginNameAttType}"/>
+			Login as:
+			<input type="text" name="${loginNameParam}" autofocus="autofocus"/>
+			<input type="submit"/>
+		</form>
+	</body>
+</html>
