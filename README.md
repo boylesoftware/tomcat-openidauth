@@ -20,15 +20,15 @@ In addition to these two standard user-supplied ID types, the OpenID Authenticat
 
 Below are examples of some well known values that can be used as user-supplied IDs:
 
-Value                                                                       | Type               | Description
-----------------------------------------------------------------------------|--------------------|-------------------------------------------------------------------------------
-https://<i></i>www.google.com/accounts/o8/id                                | OP ID              | Used for regular Google users, such as GMail users.
-https://<i></i>www.google.com/accounts/o8/id?id=[id]                        | Claimed ID         | Google user claimed ID. The id parameter is a mixed-case alpha-numeric value.
-https://<i></i>www.google.com/accounts/o8/.well-known/host-meta?hd=[domain] | Host Meta-Data URL | Used for Google Apps accounts. Domain name can be something like "example.com".
-http://<i></i>[domain]/openid?id=[id]                                       | Claimed ID         | Claimed IDs assigned to Google Apps users. Domain can be "example.com", and the id parameter is a number containing only decimal digits.
-https://<i></i>me.yahoo.com                                                 | OP ID              | Used for Yahoo! users.
-https://<i></i>me.yahoo.com/a/[id]                                          | Claimed ID         | Yahoo! user claimed ID. The id value is mixed-case alphanumeric plus dash.
-http://<i></i>[username].myopenid.com                                       | Claimed ID         | myOpenID user claimed ID.
+Value                                                                              | Type               | Description
+-----------------------------------------------------------------------------------|--------------------|-------------------------------------------------------------------------------
+https://<i></i>www.<i></i>google.com/accounts/o8/id                                | OP ID              | Used for regular Google users, such as GMail users.
+https://<i></i>www.<i></i>google.com/accounts/o8/id?id=[id]                        | Claimed ID         | Google user claimed ID. The id parameter is a mixed-case alpha-numeric value.
+https://<i></i>www.<i></i>google.com/accounts/o8/.well-known/host-meta?hd=[domain] | Host Meta-Data URL | Used for Google Apps accounts. Domain name can be something like "example.com".
+http://<i></i>[domain]/openid?id=[id]                                              | Claimed ID         | Claimed IDs assigned to Google Apps users. Domain can be "example.com", and the id parameter is a number containing only decimal digits.
+https://<i></i>me.yahoo.com                                                        | OP ID              | Used for Yahoo! users.
+https://<i></i>me.yahoo.com/a/[id]                                                 | Claimed ID         | Yahoo! user claimed ID. The id value is mixed-case alphanumeric plus dash.
+http://<i></i>[username].myopenid.com                                              | Claimed ID         | myOpenID user claimed ID.
 
 ## How OpenID Authenticator for Tomcat Works
 
@@ -71,23 +71,40 @@ Typically, the authenticator configuration is performed in the web-application's
 The authenticator supports the following optional properties:
 
 * **xriProxyURL**
-  URL of the XRI proxy resolver. Claimed IDs and OpenID provider IDs sometimes can be represented by an [XRI](http://en.wikipedia.org/wiki/XRI). In that case, the XRI needs to be *resolved* in order to discover the service end-point URL. For the XRI resolution, the authenticator relies on an external service called *XRI proxy resolver*. The default is "http://<i></i>xri.net/". It is rarely needs to be overridden.
+
+	URL of the XRI proxy resolver. Claimed IDs and OpenID provider IDs sometimes can be represented by an [XRI](http://en.wikipedia.org/wiki/XRI). In that case, the XRI needs to be *resolved* in order to discover the service end-point URL. For the XRI resolution, the authenticator relies on an external service called *XRI proxy resolver*. The default is "http://<i></i>xri.net/". It is rarely needs to be overridden.
+
 * **hostBaseURI**
-  Virtual host base URI. When the authenticator redirects the browser to the OpenID provider, it needs to specify the URL of the page, to which the OpenID provider must return after user authentication. This is so called *return URL*. The **hostBaseURI** property is used to construct the return URL. It must include and protocol (should be always HTTPS), host and, if needed, port, but not the context path. It also *must not* end with a slash. For example, "https://<i></i>www.example.com". If this property is not specified, the authenticator will make an attempt to construct the URI based on the current request. In majority of cases, the authenticator can construct the correct URI, so this property rarely needs to be overridden.
+
+	Virtual host base URI. When the authenticator redirects the browser to the OpenID provider, it needs to specify the URL of the page, to which the OpenID provider must return after user authentication. This is so called *return URL*. The **hostBaseURI** property is used to construct the return URL. It must include and protocol (should be always HTTPS), host and, if needed, port, but not the context path. It also *must not* end with a slash. For example, "https://<i></i>www.<i></i>example.com". If this property is not specified, the authenticator will make an attempt to construct the URI based on the current request. In majority of cases, the authenticator can construct the correct URI, so this property rarely needs to be overridden.
+
 * **singleProviderURI**
-  ID of the single OpenID provider. When specified, all authentication is delegated to single identified OpenID provider and no other provider is allowed to make authentication assertions. This also makes the authenticator completely skip the application login screen. As soon as an unauthenticated user makes a request to a protected resource, the authenticator immediately redirects the browser to the OpenID provider. The value of this property can be a URI, an XRI, or it can be a URL of the host meta-data that contains the OpenID provider URI.
+
+	ID of the single OpenID provider. When specified, all authentication is delegated to single identified OpenID provider and no other provider is allowed to make authentication assertions. This also makes the authenticator completely skip the application login screen. As soon as an unauthenticated user makes a request to a protected resource, the authenticator immediately redirects the browser to the OpenID provider. The value of this property can be a URI, an XRI, or it can be a URL of the host meta-data that contains the OpenID provider URI.
+
 * **allowedClaimedIDPattern**
-  Regular expression pattern for allowed claimed IDs. If this property is specified, positive authentication assertions will be accepted only if the claimed ID of the authenticated user matches the pattern. Note, that if **loginNameAttributeType** property is set, this property *must* also be set. This is a security feature that prevents a hacker running an OpenID provider that supplies login names selected by the **loginNameAttributeType** property. Claimed IDs, on the other hand, cannot be forged, because the authenticator verifies if the OpenID provider making the authentication assertion call is responsible for the supplied claimed ID.
+
+	Regular expression pattern for allowed claimed IDs. If this property is specified, positive authentication assertions will be accepted only if the claimed ID of the authenticated user matches the pattern. Note, that if **loginNameAttributeType** property is set, this property *must* also be set. This is a security feature that prevents a hacker running an OpenID provider that supplies login names selected by the **loginNameAttributeType** property. Claimed IDs, on the other hand, cannot be forged, because the authenticator verifies if the OpenID provider making the authentication assertion call is responsible for the supplied claimed ID.
+
 * **loginNameAttributeType**
-  [OpenID Attribute Exchange](http://openid.net/specs/openid-attribute-exchange-1_0.html) extension attribute type identifier of the attribute used as the application user login name. The value of the attribute, sent back to the application with the positive authentication assertion call, is used as the user name to lookup the user in the configured realm. For example, to use user e-mail address as the login name, this attribute should be set to "http://<i></i>axschema.org/contact/email". If not specified, the claimed ID is used as the login name. Note, that if this property *is* specified, the **allowedClaimedIDPattern** *must* be also specified.
+
+	[OpenID Attribute Exchange](http://openid.net/specs/openid-attribute-exchange-1_0.html) extension attribute type identifier of the attribute used as the application user login name. The value of the attribute, sent back to the application with the positive authentication assertion call, is used as the user name to lookup the user in the configured realm. For example, to use user e-mail address as the login name, this attribute should be set to "http://<i></i>axschema.org/contact/email". If not specified, the claimed ID is used as the login name. Note, that if this property *is* specified, the **allowedClaimedIDPattern** *must* be also specified.
+
 * **httpConnectTimeout**
-  Timeout in milliseconds for making HTTP connections to the third-parties in the OpenID authentication protocol. This is used when the authenticator talks directly to the servers participating in the OpenID protocol. See description [here](http://docs.oracle.com/javase/6/docs/api/java/net/URLConnection.html#setConnectTimeout(int)). The default is 5000 milliseconds.
+
+	Timeout in milliseconds for making HTTP connections to the third-parties in the OpenID authentication protocol. This is used when the authenticator talks directly to the servers participating in the OpenID protocol. See description [here](http://docs.oracle.com/javase/6/docs/api/java/net/URLConnection.html#setConnectTimeout(int)). The default is 5000 milliseconds.
+
 * **httpReadTimeout**
-  Timeout in milliseconds for reading HTTP data from the third-parties in the OpenID authentication protocol. This is used when the authenticator talks directly to the servers participating in the OpenID protocol. See description [here](http://docs.oracle.com/javase/6/docs/api/java/net/URLConnection.html#setReadTimeout(int)). The default is 5000 milliseconds.
+
+	Timeout in milliseconds for reading HTTP data from the third-parties in the OpenID authentication protocol. This is used when the authenticator talks directly to the servers participating in the OpenID protocol. See description [here](http://docs.oracle.com/javase/6/docs/api/java/net/URLConnection.html#setReadTimeout(int)). The default is 5000 milliseconds.
+
 * **browserRedirect**
-  Flag telling the authenticator if it should delegate sending the authentication request to the OpenID provider to the user's browser. When the authenticator receives the initial */j_security_check* request with the *openid_identifier* in it, thus asking it to perform OpenID authentication, if this flag is "false", the authenticator builds an authentication request, sends it directly from the server-side to the OpenID provider and expects the OpenID provider to return a redirect response, which is then relayed back to the browser making the browser go to the OpenID provider's login page. Not all OpenID providers return a redirect response upon receiving an authentication request (e.g. myOpenID). Therefore, if the **browserRedirect** flag is "true", which is the default, the authenticator builds special HTML with a form representing the authentication request and a JavaScript that automatically submits the form as soon as it is loaded. The HTML is then sent back to the browser in a regular HTTP response and the browser makes the authentication request to the OpenID provider on its own.
+
+	Flag telling the authenticator if it should delegate sending the authentication request to the OpenID provider to the user's browser. When the authenticator receives the initial */j_security_check* request with the *openid_identifier* in it, thus asking it to perform OpenID authentication, if this flag is "false", the authenticator builds an authentication request, sends it directly from the server-side to the OpenID provider and expects the OpenID provider to return a redirect response, which is then relayed back to the browser making the browser go to the OpenID provider's login page. Not all OpenID providers return a redirect response upon receiving an authentication request (e.g. myOpenID). Therefore, if the **browserRedirect** flag is "true", which is the default, the authenticator builds special HTML with a form representing the authentication request and a JavaScript that automatically submits the form as soon as it is loaded. The HTML is then sent back to the browser in a regular HTTP response and the browser makes the authentication request to the OpenID provider on its own.
+
 * **developmentMode**
-  If "true", the authenticator is switched to the special development mode. In this mode, it never actually redirects to the OpenID provider. Instead, when an authentication request is made, it shows a built-in fake login page where the developer can enter a user login name and the authenticator will make the session authenticated for the specified user.
+
+	If "true", the authenticator is switched to the special development mode. In this mode, it never actually redirects to the OpenID provider. Instead, when an authentication request is made, it shows a built-in fake login page where the developer can enter a user login name and the authenticator will make the session authenticated for the specified user.
 
 Here is an example of the authenticator configuration using e-mail address as the user login name and Google as the single OpenID provider:
 
