@@ -560,7 +560,7 @@ public class OpenIDAuthenticator
 	 * @see org.apache.catalina.authenticator.FormAuthenticator#authenticate(org.apache.catalina.connector.Request, javax.servlet.http.HttpServletResponse)
 	 */
 	@Override
-	public boolean authenticate(final Request request,
+	public boolean doAuthenticate(final Request request,
 			final HttpServletResponse response)
 		throws IOException {
 
